@@ -1,0 +1,50 @@
+# Service for the Frontend
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: cybersecurity
+  labels:
+    app: frontend
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+---
+# Service for the Backend
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: cybersecurity
+  labels:
+    app: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  type: ClusterIP
+---
+# Service for the Blockchain Node
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-service
+  namespace: cybersecurity
+  labels:
+    app: blockchain
+spec:
+  selector:
+    app: blockchain
+  ports:
+    - protocol: TCP
+      port: 8545
+      targetPort: 8545
+  type: ClusterIP
